@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftDorms</title>
+</head>
+
+<style>
+    #chat {
+      float: left;
+    }
+    #profile {
+      float: right;
+    }
+    .hidden {
+      display: none;
+    }
+</style>
+
+<body>
+    <header>
+        <div id="chat">
+            <div class="label" onclick="openChatlist()">Chat</div>
+            <div id=chatlist class="popup hidden">
+                <div>Option 1</div>
+                <div>Option 2</div>
+            </div>
+        </div>
+    </header>
+    <script>
+      function openChatlist() { document.querySelector('#chatlist').classList.toggle('hidden'); }
+      document.querySelector('#chat > .label').addEventListener('mouseenter', openChatlist);
+      document.querySelector('#chat > .label').addEventListener('mouseleave', openChatlist);
+    </script>
+</body>
+
+</html>
