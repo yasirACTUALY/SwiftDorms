@@ -2,13 +2,13 @@
 <html lang="en">
 
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwiftDorms</title>
-</head>
+  </head>
 
-<style>
+  <style>
     #chat {
       float: left;
     }
@@ -18,23 +18,40 @@
     .hidden {
       display: none;
     }
-</style>
+  </style>
 
-<body>
+  <body>
     <header>
-        <div id="chat">
-            <div class="label" onclick="openChatlist()">Chat</div>
-            <div id=chatlist class="popup hidden">
-                <div>Option 1</div>
-                <div>Option 2</div>
-            </div>
+      <div id="chat">
+        <div class="label">Chat</div>
+        <div id=chatlist class="popup hidden">
+          <div>Option 1</div>
+          <div>Option 2</div>
         </div>
+      </div>
+      <div id=profile>
+        <div class="label">Profile</div>
+        <div class="popup hidden">
+          <div>Option 1</div>
+          <div>Option 2</div>
+        </div>
+      </div>
     </header>
     <script>
-      function openChatlist() { document.querySelector('#chatlist').classList.toggle('hidden'); }
-      document.querySelector('#chat > .label').addEventListener('mouseenter', openChatlist);
-      document.querySelector('#chat > .label').addEventListener('mouseleave', openChatlist);
+      function onHover(element, func) {
+        element.addEventListener('mouseenter', func);
+        element.addEventListener('mouseleave', func);
+      }
+      function openChatlist() { 
+        document.querySelector('#chat > .popup').classList.toggle('hidden'); 
+        // document.querySelector('#chatlist').classList.toggle('hidden'); 
+      }
+      onHover(document.querySelector('#chat > .label'), openChatlist);
+      function openProfileOpts() {
+        document.querySelector('#profile > .popup').classList.toggle('hidden'); 
+      }
+      onHover(document.querySelector('#profile > .label'), openProfileOpts);
     </script>
-</body>
+  </body>
 
 </html>
