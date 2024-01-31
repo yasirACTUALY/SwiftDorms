@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftDorms</title>
+  </head>
+
+  <style>
+    /* search button shape and color */
+    .search-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+
+    .search-box input {
+      width: 60%;
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      font-size: 18px;
+    }
+
+    .search-box button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #169c1b;
+      color: white;
+      font-size: 18px;
+    }
+
+    body {
+      font-family: sans-serif, Arial, Helvetica;
+    }
+    * {
+      box-sizing: border-box;
+    }
+
+    .sorting {
+      position: absolute;
+      padding: 10px 20px;
+      font-size: 18px;
+      top: 8%;
+      width: 100%;
+      right: 0%;
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+
+    .sortbtn {
+      padding: 10px 200px;
+      border: none;
+      background-color: #848474;
+      color: white;
+      font-size: 18px;
+    }
+    .sortbtn:hover {
+      background-color: #656557;
+      color: #413333;
+    }
+
+    .sortOptions {
+      display: table;
+      position: absolute;
+      top: 100%;
+      left: 0%;
+      width: 100%;
+      padding: 10px;
+      background-color: #413333;
+      text-align: center;
+    }
+    .sortOptions a {
+      padding: 10px 20px;
+      border: none;
+      color: rgb(23, 196, 75);
+      font-size: 18px;
+    }
+    .sortOptions a:hover {
+      background-color: #f2f2f2;
+      color: #413333;
+    }
+    .sortOptions button {
+      padding: 10px 20px;
+      color: rgb(23, 196, 75);
+      font-size: 18px;
+      /* makes space between the butons */
+      margin-right: 10%;
+    }
+    .sorting:hover .sortOptions {
+      display: table-row-group;
+    }
+  </style>
+
+  <body>
+    <!-- Search bar and button-->
+    <div class="search-box">
+      <input type="text" placeholder="Search for a dorm" id="search" />
+      <button onclick="search() ">Search</button>
+    </div>
+    <div class="sorting">
+      <button class="sortbtn" onclick="print()">Sort</button>
+      <div class="sortOptions">
+        <b>Sort by: </b>
+        <button class="distanceSortBtn">distance options</button>
+        <button class="costSortBtn">cost</button>
+        <button class="ratingSortBtn">rating</button>
+        <button class="roomsCountSortBtn">rooms count</button>
+        <div class="distanceOptionsMenu">
+          <!-- a slider to choose distance range -->
+          <input type="range" id="distance" name="distance" min="0" max="100" />
+          <label for="distance">Distance: </label>
+          <output for="distance">0</output>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function search() {
+        //function to search of the dorm listed
+      }
+      function print() {
+        //prints the top location of height of the search box
+        console.log(
+          document.querySelector(".sorting").getBoundingClientRect().top
+        );
+      }
+      function openForm() {
+        document.getElementById("myForm").style.display = "block";
+      }
+
+      function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
