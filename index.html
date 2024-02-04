@@ -9,15 +9,24 @@
   </head>
 
   <style>
-    #chat {
-      float: left;
+    body { font-family: sans-serif, Arial, Helvetica; }
+    * { box-sizing: border-box; }
+    header {
+      padding: 0.3em;
+      border-bottom: 1px solid;
+      display: flex;
+      justify-content: space-between;
     }
-    #profile {
-      float: right;
+    header .label {
+      font-weight: 700;
+      font-size: 20px;
     }
-    .hidden {
-      display: none;
+    header .popup {
+      position: fixed;
+      background: white;
+      border: 1px solid grey;
     }
+    .hidden { display: none; }
   </style>
 
   <body>
@@ -38,19 +47,16 @@
       </div>
     </header>
     <script>
-      function onHover(element, func) {
-        element.addEventListener('mouseenter', func);
-        element.addEventListener('mouseleave', func);
+      function onHover(element, openFunc, closeFunc) {
+        element.addEventListener('mouseenter', openFunc);
+        element.addEventListener('mouseleave', closeFunc ?? openFunc);
       }
-      function openChatlist() { 
+      onHover(document.querySelector('#chat > .label'), () => {
         document.querySelector('#chat > .popup').classList.toggle('hidden'); 
-        // document.querySelector('#chatlist').classList.toggle('hidden'); 
-      }
-      onHover(document.querySelector('#chat > .label'), openChatlist);
-      function openProfileOpts() {
+      });
+      onHover(document.querySelector('#profile > .label'), () => {
         document.querySelector('#profile > .popup').classList.toggle('hidden'); 
-      }
-      onHover(document.querySelector('#profile > .label'), openProfileOpts);
+      });
     </script>
   </body>
 
