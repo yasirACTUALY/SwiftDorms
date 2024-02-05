@@ -52,20 +52,20 @@
       text-align: center;
     }
 
-    .sortbtn {
+    .sortBtn {
       padding: 10px 200px;
       border: none;
       background-color: #848474;
       color: white;
       font-size: 18px;
     }
-    .sortbtn:hover {
+    .sortBtn:hover {
       background-color: #656557;
       color: #413333;
     }
 
     .sortOptions {
-      display: table;
+      display: list-item;
       position: absolute;
       top: 100%;
       left: 0%;
@@ -88,11 +88,126 @@
       padding: 10px 20px;
       color: rgb(23, 196, 75);
       font-size: 18px;
-      /* makes space between the butons */
-      margin-right: 10%;
+      /* margin-right: 10%; */
     }
     .sorting:hover .sortOptions {
-      display: table-row-group;
+      display: table;
+    }
+    /* shows rhe wrapper when disance sort btn is clicked */
+
+    .distanceSortBtn:hover + .wrapper {
+      display: block;
+    }
+
+    /* makes two sliders into one */
+    .wrapper {
+      position: absolute;
+      /* display: none; */
+      top: 210%;
+      width: 35%;
+      left: 35%;
+      background-color: #408ebe;
+      padding: 10px;
+      border-radius: 50px;
+    }
+    
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 100%;
+      outline: none;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      background-color: transparent;
+      pointer-events: none;
+    }
+    .slider-track {
+      width: 100%;
+      height: 5%;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      border-radius: 5%;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      height: 5%;
+    }
+    input[type="range"]::-moz-range-track {
+      -moz-appearance: none;
+      height: 5%;
+    }
+    input[type="range"]::-ms-track {
+      appearance: none;
+      height: 5%;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 1.7em;
+      width: 1.7em;
+      background-color: #3264fe;
+      cursor: pointer;
+      margin-top: -9px;
+      pointer-events: auto;
+      border-radius: 50%;
+    }
+    input[type="range"]::-moz-range-thumb {
+      -webkit-appearance: none;
+      height: 1.7em;
+      width: 1.7em;
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: #3264fe;
+      pointer-events: auto;
+    }
+    input[type="range"]::-ms-thumb {
+      appearance: none;
+      height: 1.7em;
+      width: 1.7em;
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: #3264fe;
+      pointer-events: auto;
+    }
+    input[type="range"]:active::-webkit-slider-thumb {
+      background-color: #ffffff;
+      border: 3px solid #3264fe;
+    }
+    .values {
+      background-color: #3264fe;
+      width: 32%;
+      position: relative;
+      margin: auto;
+      padding: 10px 0;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 25px;
+      color: #ffffff;
+    }
+    .values:before {
+      content: "";
+      position: absolute;
+      height: 0;
+      width: 0;
+      border-top: 15px solid #3264fe;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      margin: auto;
+      bottom: -14px;
+      left: 0;
+      right: 0;
     }
   </style>
 
@@ -102,23 +217,47 @@
       <input type="text" placeholder="Search for a dorm" id="search" />
       <button onclick="search() ">Search</button>
     </div>
+    <!-- sorting options -->
     <div class="sorting">
-      <button class="sortbtn" onclick="print()">Sort</button>
+      <!-- sorting button  -->
+      <button class="sortBtn" onclick="print()">Sort</button>
+      <!-- sorting options -->
       <div class="sortOptions">
         <b>Sort by: </b>
-        <button class="distanceSortBtn">distance options</button>
+        <button class="distanceSortBtn" onclick="sliders()">distance options</button>
         <button class="costSortBtn">cost</button>
         <button class="ratingSortBtn">rating</button>
         <button class="roomsCountSortBtn">rooms count</button>
-        <div class="distanceOptionsMenu">
-          <!-- a slider to choose distance range -->
-          <input type="range" id="distance" name="distance" min="0" max="100" />
-          <label for="distance">Distance: </label>
-          <output for="distance">0</output>
-        </div>
+    </div>
+
+    <div class="wrapper" id="wrapper">
+      <div class="values">
+        <span id="range1"> 0 </span>
+        <span> &dash; </span>
+        <span id="range2"> 100 </span>
+      </div>
+      <div class="container">
+        <div class="slider-track"></div>
+        <input
+          type="range"
+          min="0"
+          max="150"
+          value="30"
+          id="slider-1"
+          oninput="slideOne()"
+        />
+        <input
+          type="range"
+          min="0"
+          max="150"
+          value="70"
+          id="slider-2"
+          oninput="slideTwo()"
+        />
       </div>
     </div>
 
+    <script src="index.js"></script>
     <script>
       function search() {
         //function to search of the dorm listed
@@ -135,6 +274,17 @@
 
       function closeForm() {
         document.getElementById("myForm").style.display = "none";
+      }
+      function sliders(){
+        //turn on the display if it's off otherwise turn it off
+        if(document.getElementById("wrapper").style.display == "block"){
+          document.getElementById("wrapper").style.display = "none";
+        }
+        else{
+          document.getElementById("wrapper").style.display = "block";
+        }
+        //prints done
+        console.log("done");
       }
     </script>
   </body>
