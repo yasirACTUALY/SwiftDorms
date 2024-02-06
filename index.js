@@ -28,3 +28,36 @@ function fillColor(){
     percent2 = (sliderTwo.value / sliderMaxValue) * 100;
     sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
 }
+
+
+function search() {
+    //function to search of the dorm listed
+  }
+  function print() {
+    //prints the top location of height of the search box
+    console.log(
+      document.querySelector(".sorting").getBoundingClientRect().top
+    );
+  }
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+  function sliders(){
+    document.querySelector(".sorting").addEventListener("mouseleave",()=> {
+    document.querySelector(".wrapper").style.display = "none";
+    document.getElementById("wrapper").style.display = "none";
+  });
+    //turn on the display if it's off otherwise turn it off
+    if(document.getElementById("wrapper").style.display == "block"){
+      document.getElementById("wrapper").style.display = "none";
+    }
+    else{
+      document.getElementById("wrapper").style.display = "block";
+    }
+    //prints done
+    console.log("done");
+  }

@@ -1,32 +1,109 @@
-*,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
+/* search button shape and color */
+.search-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+
+  .search-box input {
+    width: 60%;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    font-size: 18px;
+  }
+
+  .search-box button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #169c1b;
+    color: white;
+    font-size: 18px;
+  }
+
+  body {
+    font-family: sans-serif, Arial, Helvetica;
+  }
+  * {
     box-sizing: border-box;
-    font-family: "Poppins",sans-serif;
-}
-body{
-    height: 100vh;
-    display: -ms-grid;
-    display: grid;
-    background-color: #3264fe;
-    place-items: center;
-}
-.wrapper{
-    position: relative;
-    width: 95vmin;
-    background-color: #ffffff;
-    padding: 50px 40px 20px 40px;
-    border-radius: 10px;
-}
-.container{
+  }
+
+  .sorting {
+    position: absolute;
+    padding: 10px 20px;
+    font-size: 18px;
+    top: 8%;
+    width: 100%;
+    right: 0%;
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+
+  .sortBtn {
+    padding: 10px 200px;
+    border: none;
+    background-color: #848474;
+    color: white;
+    font-size: 18px;
+  }
+  .sortBtn:hover {
+    background-color: #656557;
+    color: #413333;
+  }
+
+  .sortOptions {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 100%;
+    padding: 10px;
+    background-color: #413333;
+    text-align: center;
+  }
+  .sortOptions a {
+    padding: 10px 20px;
+    border: none;
+    color: rgb(23, 196, 75);
+    font-size: 18px;
+  }
+  .sortOptions a:hover {
+    background-color: #f2f2f2;
+    color: #413333;
+  }
+  .sortOptions button {
+    padding: 10px 20px;
+    color: rgb(23, 196, 75);
+    font-size: 18px;
+    /* margin-right: 10%; */
+  }
+  .sorting:hover .sortOptions {
+    display: list-item;
+  }
+
+  /* makes two sliders into one */
+  .wrapper {
+    position: absolute;
+    /* display: none; */
+    top: 210%;
+    width: 35%;
+    left: 35%;
+    background-color: #408ebe;
+    padding: 10px;
+    border-radius: 50px;
+  }
+  
+  .container {
     position: relative;
     width: 100%;
     height: 100px;
-    margin-top: 30px;
-}
-input[type="range"]{
+    margin-top: 10px;
+  }
+  input[type="range"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -36,31 +113,32 @@ input[type="range"]{
     margin: auto;
     top: 0;
     bottom: 0;
+    left: 0;
     background-color: transparent;
     pointer-events: none;
-}
-.slider-track{
+  }
+  .slider-track {
     width: 100%;
-    height: 5px;
+    height: 5%;
     position: absolute;
     margin: auto;
     top: 0;
     bottom: 0;
-    border-radius: 5px;
-}
-input[type="range"]::-webkit-slider-runnable-track{
+    border-radius: 5%;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
     -webkit-appearance: none;
-    height: 5px;
-}
-input[type="range"]::-moz-range-track{
+    height: 5%;
+  }
+  input[type="range"]::-moz-range-track {
     -moz-appearance: none;
-    height: 5px;
-}
-input[type="range"]::-ms-track{
+    height: 5%;
+  }
+  input[type="range"]::-ms-track {
     appearance: none;
-    height: 5px;
-}
-input[type="range"]::-webkit-slider-thumb{
+    height: 5%;
+  }
+  input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 1.7em;
     width: 1.7em;
@@ -69,8 +147,8 @@ input[type="range"]::-webkit-slider-thumb{
     margin-top: -9px;
     pointer-events: auto;
     border-radius: 50%;
-}
-input[type="range"]::-moz-range-thumb{
+  }
+  input[type="range"]::-moz-range-thumb {
     -webkit-appearance: none;
     height: 1.7em;
     width: 1.7em;
@@ -78,8 +156,8 @@ input[type="range"]::-moz-range-thumb{
     border-radius: 50%;
     background-color: #3264fe;
     pointer-events: auto;
-}
-input[type="range"]::-ms-thumb{
+  }
+  input[type="range"]::-ms-thumb {
     appearance: none;
     height: 1.7em;
     width: 1.7em;
@@ -87,12 +165,12 @@ input[type="range"]::-ms-thumb{
     border-radius: 50%;
     background-color: #3264fe;
     pointer-events: auto;
-}
-input[type="range"]:active::-webkit-slider-thumb{
+  }
+  input[type="range"]:active::-webkit-slider-thumb {
     background-color: #ffffff;
     border: 3px solid #3264fe;
-}
-.values{
+  }
+  .values {
     background-color: #3264fe;
     width: 32%;
     position: relative;
@@ -103,8 +181,8 @@ input[type="range"]:active::-webkit-slider-thumb{
     font-weight: 500;
     font-size: 25px;
     color: #ffffff;
-}
-.values:before{
+  }
+  .values:before {
     content: "";
     position: absolute;
     height: 0;
@@ -116,4 +194,4 @@ input[type="range"]:active::-webkit-slider-thumb{
     bottom: -14px;
     left: 0;
     right: 0;
-}
+  }
