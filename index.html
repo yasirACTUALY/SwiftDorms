@@ -20,11 +20,19 @@
     header .label {
       font-weight: 700;
       font-size: 20px;
+      /* vertical-align: text-top; */
     }
     header .popup {
       position: fixed;
       background: white;
       border: 1px solid grey;
+      margin: 0.5em;
+    }
+    profile .label {
+      border: 1px solid grey;
+      border-radius: 50%;
+      clip-path: circle();
+      background-color: black;
     }
     .hidden { display: none; }
   </style>
@@ -39,7 +47,7 @@
         </div>
       </div>
       <div id=profile>
-        <div class="label">Profile</div>
+        <div class="label"><img src='pfp.svg' /></div>
         <div class="popup hidden">
           <div>Option 1</div>
           <div>Option 2</div>
@@ -51,12 +59,12 @@
         element.addEventListener('mouseenter', openFunc);
         element.addEventListener('mouseleave', closeFunc ?? openFunc);
       }
-      onHover(document.querySelector('#chat > .label'), () => {
-        document.querySelector('#chat > .popup').classList.toggle('hidden'); 
-      });
-      onHover(document.querySelector('#profile > .label'), () => {
-        document.querySelector('#profile > .popup').classList.toggle('hidden'); 
-      });
+      onHover(document.querySelector(/*'#chat > .label' */ '#chat'), () =>
+        document.querySelector('#chat > .popup').classList.toggle('hidden'));
+      // ...
+      document.querySelector('#profile > .label').addEventListener('click', () =>
+        document.querySelector('#profile > .popup').classList.toggle('hidden'));
+      // ...
     </script>
   </body>
 
