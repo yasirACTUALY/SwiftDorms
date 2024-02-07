@@ -11,6 +11,10 @@
   <style>
     body { font-family: sans-serif, Arial, Helvetica; }
     * { box-sizing: border-box; }
+
+    /* should give everything that rounded look-- but most likely gonna break a bunch of stuff ;-; XD */
+    * { border-radius: 0.3em; }
+
     header {
       padding: 2em;
       padding-top: 0.7em;
@@ -27,28 +31,15 @@
     header .popup {
       position: fixed;
       background: white;
-      border: 1px solid grey;
+      box-shadow: 0.05em 0.1em 0.1em lightgrey; 
       margin: 0.5em;
-      /* right: 5%; */
-      /* overflow:  */
-    }
-    profile .label {
-      /* display: inline-block; */
+      padding: 0.5em;
     }
     header .label img {
       clip-path: circle();
       background-color: lightgrey;
       height: 1.5em;
       width: 1.5em;
-      /* border: 1px solid grey; */
-      /* border-radius: 5; */
-    }
-    header > div { 
-      display: inline-block;
-      vertical-align: text-bottom;
-    }
-    header {
-      vertical-align: middle;
     }
     .hidden { display: none; }
   </style>
@@ -61,14 +52,14 @@
       <div id="chat">
         <div class="label">Chat</div>
         <div id=chatlist class="popup hidden">
-          <div>Option&nbsp;1</div>
+          <div>Option 1</div>
           <div>Option 2</div>
         </div>
       </div>
       <div id=profile>
         <div class="label"><img src='pfp.svg' /></div>
         <div class="popup hidden">
-          <span>Option&nbsp;&nbsp;&nbsp;1</span>
+          <div>Option&nbsp;&nbsp;&nbsp;1</div>
           <div>Option 2</div>
         </div>
       </div>
@@ -80,13 +71,11 @@
       }
       onHover(document.querySelector('#chat'), () =>
         document.querySelector('#chat > .popup').classList.toggle('hidden'));
-      // ...
       document.querySelector('#profile > .label').addEventListener('click', (ev) => {
         var popup = document.querySelector('#profile > .popup');
         popup.classList.toggle('hidden');
         popup.style['right'] = `${popup.offsetWidth - ev.target.offsetWidth}px`;
       });
-      // ...
     </script>
   </body>
 
