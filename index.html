@@ -19,7 +19,8 @@
       padding: 2em;
       padding-top: 0.7em;
       padding-bottom: 0.7em;
-      border-bottom: 1px solid;
+      border-bottom: 3px solid lightgrey;
+      border-radius: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -41,7 +42,37 @@
       height: 1.5em;
       width: 1.5em;
     }
-    .hidden { display: none; }
+    .hidden { display: none !important; }
+    #login-modal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      align-content: space-around;
+      justify-content: space-around;
+    }
+    #login-modal form {
+      border: 3px solid black;
+      border-radius: 0.8em;
+      padding: 1.5em;
+      display: grid;
+      align-content: space-around;
+      justify-content: space-around;
+      height: 30vh;
+      width: 30vw;
+    }
+    #login-modal form input {
+      border: 3px solid black;
+      background: white;
+      margin: 0.1em;
+      display: inline-block;
+      padding: 0.5em;
+    }
+    #login-modal form input[type=submit]:hover {
+      background: #AAA2;
+    }
   </style>
 
   <body>
@@ -64,6 +95,18 @@
         </div>
       </div>
     </header>
+    <div id=login-modal class=hidden>
+      <form method=put action=/login>
+        <svg style='position: fixed;' height=1.5em width=1.5em viewBox="0 0 1.5 1.5">
+          <line x1=0 y1=0 x2=1.5 y2=1.5 stroke=black stroke-width=0.1 />
+          <line x1=0 y1=1.5 x2=1.5 y2=0 stroke=black stroke-width=0.1 />
+        </svg>
+        <h3>Log In</h3>
+        <input type=text name=username placeholder=username />
+        <input type=password name=password placeholder=password />
+        <center><input type=submit value='submit' /></center>
+      </form>
+    </div>
     <script>
       function onHover(element, openFunc, closeFunc) {
         element.addEventListener('mouseenter', openFunc);
@@ -71,11 +114,18 @@
       }
       onHover(document.querySelector('#chat'), () =>
         document.querySelector('#chat > .popup').classList.toggle('hidden'));
+      var signedIn = false;
       document.querySelector('#profile > .label').addEventListener('click', (ev) => {
-        var popup = document.querySelector('#profile > .popup');
-        popup.classList.toggle('hidden');
-        popup.style['right'] = `${popup.offsetWidth - ev.target.offsetWidth}px`;
+        if(signedIn) {
+          var popup = document.querySelector('#profile > .popup');
+          popup.classList.toggle('hidden');
+          popup.style['right'] = `${popup.offsetWidth - ev.target.offsetWidth}px`;
+        } else {
+          document.querySelector('#login-modal').classList.toggle('hidden');
+        }
       });
+      document.querySelector('#login-modal form svg').addEventListener('click', () =>
+        document.querySelector('#login-modal').classList.toggle('hidden'));
     </script>
   </body>
 
