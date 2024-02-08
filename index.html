@@ -126,6 +126,11 @@
       });
       document.querySelector('#login-modal form svg').addEventListener('click', () =>
         document.querySelector('#login-modal').classList.toggle('hidden'));
+      // now you can close the modal by just clicking outside of it.
+      document.querySelector('#login-modal').addEventListener('click', () =>
+        document.querySelector('#login-modal').classList.toggle('hidden'), false);
+      document.querySelector('#login-modal form').addEventListener('click', (ev) =>
+        ev.stopPropagation(), false);
     </script>
   </body>
 
