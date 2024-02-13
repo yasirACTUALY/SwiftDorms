@@ -2,10 +2,10 @@
   width: 70%;
 }
 .leftBar {
-  position: absolute;
+  position: sticky;
   width: 20%;
-  top: 10%;
-  height: 90%;
+  top: 6.48%;
+  height: 100vh;
   /* background-color: #939496; */
   /* color: transparent; */
   background-color: #b5b5b5;
@@ -143,4 +143,128 @@ input[type="range"]::-webkit-slider-thumb {
 
 .filterBtn {
   margin-top: 5%;
+}
+
+/* header code */
+
+body {
+  font-family: sans-serif, Arial, Helvetica;
+}
+* {
+  box-sizing: border-box;
+}
+
+header {
+  padding: 2em;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  border-bottom: 3px solid lightgrey;
+  border-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .label {
+  font-weight: 700;
+  font-size: 20px;
+}
+header .popup {
+  position: fixed;
+  background: white;
+  box-shadow: 0.05em 0.1em 0.1em lightgrey;
+  /* margin: 0.5em; */
+  padding: 0.5em;
+}
+header .label img {
+  clip-path: circle();
+  background-color: lightgrey;
+  height: 1.5em;
+  width: 1.5em;
+}
+.hidden {
+  display: none !important;
+}
+#login-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-content: space-around;
+  justify-content: space-around;
+}
+#login-modal form {
+  border: 3px solid black;
+  border-radius: 0.8em;
+  padding: 1.5em;
+  display: grid;
+  align-content: space-around;
+  justify-content: space-around;
+  height: 30vh;
+  width: 30vw;
+}
+#login-modal form input {
+  border: 3px solid black;
+  background: white;
+  margin: 0.1em;
+  display: inline-block;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+#login-modal form input[type="submit"]:hover {
+  background: #aaa2;
+}
+
+/* Listing */
+html {
+  /* padding: 0 10em; */
+  font-family: Calibri, sans-serif;
+}
+
+.cd__main {
+  max-width: 720px !important;
+}
+
+img {
+  max-width: 220px;
+  height: auto;
+}
+
+.image-left {
+  margin: 1em 0;
+  background: #eeeeee;
+  margin-left: 600px;
+  border-radius: 2%;
+  padding: 10px;
+}
+
+@media (min-width: 20em) {
+  .image-left {
+    display: flex;
+    align-items: right;
+  }
+
+  .image-left img {
+    margin-right: 1em;
+    float: left;
+    /* fallback */
+  }
+
+  /* clearfix for fallback */
+  .image-left::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@media (min-width: 30em) {
+  .image-left img {
+    flex-shrink: 0;
+  }
+}
+
+.image-left:hover {
+  box-shadow: 0 5px 15px rgba(68, 68, 68, 0.8);
 }

@@ -104,3 +104,30 @@ function search() {
     //prints done
     console.log("done");
   }
+
+
+  //Header Script
+  
+  function onHover(element, openFunc, closeFunc) {
+    element.addEventListener('mouseenter', openFunc);
+    element.addEventListener('mouseleave', closeFunc ?? openFunc);
+  }
+  onHover(document.querySelector('#chat'), () =>
+    document.querySelector('#chat > .popup').classList.toggle('hidden'));
+  var signedIn = false;
+  document.querySelector('#profile > .label').addEventListener('click', (ev) => {
+    if(signedIn) {
+      var popup = document.querySelector('#profile > .popup');
+      popup.classList.toggle('hidden');
+      popup.style['right'] = `${popup.offsetWidth - ev.target.offsetWidth}px`;
+    } else {
+      document.querySelector('#login-modal').classList.toggle('hidden');
+    }
+  });
+  document.querySelector('#login-modal form svg').addEventListener('click', () =>
+    document.querySelector('#login-modal').classList.toggle('hidden'));
+  // now you can close the modal by just clicking outside of it.
+  document.querySelector('#login-modal').addEventListener('click', () =>
+    document.querySelector('#login-modal').classList.toggle('hidden'), false);
+  document.querySelector('#login-modal form').addEventListener('click', (ev) =>
+    ev.stopPropagation(), false);
