@@ -1,197 +1,146 @@
-/* search button shape and color */
-.search-box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    background-color: #f2f2f2;
-    text-align: center;
-  }
+.searchBox {
+  width: 70%;
+}
+.leftBar {
+  position: absolute;
+  width: 20%;
+  top: 10%;
+  height: 90%;
+  /* background-color: #939496; */
+  /* color: transparent; */
+  background-color: #b5b5b5;
+  padding: 10px;
+  left: 0%;
+}
+/* makes two sliders into one */
+.wrapper {
+  /* position: absolute; */
+  /* display: none; */
+  top: 0%;
+  width: 60%;
+  height: 50px;
+  left: 0%;
+  background-color: gray;
+  padding: 0px;
+  border-radius: 50px;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  margin-top: 10px;
+}
+.leftSlider {
+  position: absolute;
+  top: -100%;
+  left: 5%;
+  width: 90%;
+  height: 50%;
+  background-color: transparent;
+}
+.rightSlider {
+  top: -100%;
+  left: 5%;
+  width: 90%;
+  height: 0%;
+  background-color: transparent;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 5%;
+  outline: gold;
+  position: absolute;
+  margin: auto;
+  top: -30;
+  bottom: 0;
+  left: 5%;
+  background-color: transparent;
+  pointer-events: none;
+}
 
-  .search-box input {
-    width: 60%;
-    padding: 10px;
-    margin: 10px;
-    border: none;
-    font-size: 18px;
-  }
+#track1 {
+  width: 80%;
+  left: 10%;
+  height: 40%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 5%;
+}
+#track2 {
+  width: 80%;
+  left: 10%;
+  height: 40%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 5%;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 5%;
+}
+input[type="range"]::-moz-range-track {
+  -moz-appearance: none;
+  height: 5%;
+  top: 10px;
+}
+input[type="range"]::-ms-track {
+  appearance: none;
+  height: 5%;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  background-color: darkgrey;
+  cursor: pointer;
+  margin-top: -4%;
+  pointer-events: auto;
+  border-radius: 50%;
+}
+/* input[type="range"]:active::-webkit-slider-thumb {
+  background-color: #ffffff;
+  border: 20px solid #3264fe;
+} */
+.values {
+  background-color: #c0c0c0;
+  width: 50%;
+  height: 1%;
+  position: relative;
+  margin: auto;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 25px;
+  color: #ffffff;
+}
+/* showing the values of sliders*/
+.rangeRead {
+  position: relative;
+  color: #000;
+  font-size: 70%;
+  top: -17px;
+}
+.rangeDash {
+  position: relative;
+  color: #000;
+  font-size: 70%;
+  top: -17px;
+}
 
-  .search-box button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #169c1b;
-    color: white;
-    font-size: 18px;
-  }
+.sort {
+  position: absolute;
+  color: #000;
+  font-size: 70%;
+  top: 10%;
+  right: 40%;
+}
 
-  body {
-    font-family: sans-serif, Arial, Helvetica;
-  }
-  * {
-    box-sizing: border-box;
-  }
-
-  .sorting {
-    position: absolute;
-    padding: 10px 20px;
-    font-size: 18px;
-    top: 8%;
-    width: 100%;
-    right: 0%;
-    background-color: #f2f2f2;
-    text-align: center;
-  }
-
-  .sortBtn {
-    padding: 10px 200px;
-    border: none;
-    background-color: #848474;
-    color: white;
-    font-size: 18px;
-  }
-  .sortBtn:hover {
-    background-color: #656557;
-    color: #413333;
-  }
-
-  .sortOptions {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0%;
-    width: 100%;
-    padding: 10px;
-    background-color: #413333;
-    text-align: center;
-  }
-  .sortOptions a {
-    padding: 10px 20px;
-    border: none;
-    color: rgb(23, 196, 75);
-    font-size: 18px;
-  }
-  .sortOptions a:hover {
-    background-color: #f2f2f2;
-    color: #413333;
-  }
-  .sortOptions button {
-    padding: 10px 20px;
-    color: rgb(23, 196, 75);
-    font-size: 18px;
-    /* margin-right: 10%; */
-  }
-  .sorting:hover .sortOptions {
-    display: list-item;
-  }
-
-  /* makes two sliders into one */
-  .wrapper {
-    position: absolute;
-    /* display: none; */
-    top: 210%;
-    width: 35%;
-    left: 35%;
-    background-color: #408ebe;
-    padding: 10px;
-    border-radius: 50px;
-  }
-  
-  .container {
-    position: relative;
-    width: 100%;
-    height: 100px;
-    margin-top: 10px;
-  }
-  input[type="range"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 100%;
-    outline: none;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    background-color: transparent;
-    pointer-events: none;
-  }
-  .slider-track {
-    width: 100%;
-    height: 5%;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    border-radius: 5%;
-  }
-  input[type="range"]::-webkit-slider-runnable-track {
-    -webkit-appearance: none;
-    height: 5%;
-  }
-  input[type="range"]::-moz-range-track {
-    -moz-appearance: none;
-    height: 5%;
-  }
-  input[type="range"]::-ms-track {
-    appearance: none;
-    height: 5%;
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 1.7em;
-    width: 1.7em;
-    background-color: #3264fe;
-    cursor: pointer;
-    margin-top: -9px;
-    pointer-events: auto;
-    border-radius: 50%;
-  }
-  input[type="range"]::-moz-range-thumb {
-    -webkit-appearance: none;
-    height: 1.7em;
-    width: 1.7em;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #3264fe;
-    pointer-events: auto;
-  }
-  input[type="range"]::-ms-thumb {
-    appearance: none;
-    height: 1.7em;
-    width: 1.7em;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #3264fe;
-    pointer-events: auto;
-  }
-  input[type="range"]:active::-webkit-slider-thumb {
-    background-color: #ffffff;
-    border: 3px solid #3264fe;
-  }
-  .values {
-    background-color: #3264fe;
-    width: 32%;
-    position: relative;
-    margin: auto;
-    padding: 10px 0;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 25px;
-    color: #ffffff;
-  }
-  .values:before {
-    content: "";
-    position: absolute;
-    height: 0;
-    width: 0;
-    border-top: 15px solid #3264fe;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    margin: auto;
-    bottom: -14px;
-    left: 0;
-    right: 0;
-  }
+.filterBtn {
+  margin-top: 5%;
+}

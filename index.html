@@ -5,54 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SwiftDorms</title>
   </head>
-  
-    <!--Stylesheet-->
-    <link rel="stylesheet" href="index.css" />
+
+  <!--Stylesheet-->
+  <link rel="stylesheet" href="index.css" />
 
   <body>
-    <!-- Search bar and button-->
-    <div class="search-box">
-      <input type="text" placeholder="Search for a dorm" id="search" />
-      <button onclick="search() ">Search</button>
-    </div>
-    <!-- sorting options -->
-    <div class="sorting">
-      <!-- sorting button  -->
-      <button class="sortBtn" onclick="print()">Sort</button>
-      <!-- sorting options -->
-      <div class="sortOptions">
-        <b>Sort by: </b>
-        <button class="distanceSortBtn" onclick="sliders()">distance options</button>
-        <button class="costSortBtn">cost</button>
-        <button class="ratingSortBtn">rating</button>
-        <button class="roomsCountSortBtn">rooms count</button>
+    <!-- sorting options bar -->
+    <div class="leftBar">
+      <div class="leftBarContent">
+        <h2>Filters</h2>
+        <div class="filter">
+          <h3>Location</h3>
+          <input
+            class="searchBox"
+            type="text"
+            placeholder="Enter location"
+            id="location"
+          />
+        </div>
+        <div class="filter">
+          <h3>Cost</h3>
+          <div class="wrapper" id="wrapper">
+            <div class="values">
+              <span class="rangeRead" id="range1"> 0 </span>
+              <span class="rangeDash"> &dash; </span>
+              <span class="rangeRead" id="range2"> 100 </span>
+            </div>
+            <div class="container">
+              <div class="slider-track" id="track1"></div>
+              <input
+                class="leftSlider"
+                type="range"
+                min="0"
+                max="150"
+                value="30"
+                id="slider-1"
+                oninput="slideOne()"
+              />
+              <input
+                class="rightSlider"
+                type="range"
+                min="0"
+                max="150"
+                value="70"
+                id="slider-2"
+                oninput="slideTwo()"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="filter">
+          <h3>Rating</h3>
+          <input
+            class="searchBox"
+            type="text"
+            placeholder="Enter rating"
+            id="rating"
+          />
+        </div>
+        <div class="filter">
+          <h3>Rooms count</h3>
+          <input
+            class="searchBox"
+            type="text"
+            placeholder="Enter rooms count"
+            id="roomsCount"
+          />
+        </div>
+        <div class="filter">
+          <h3>Distance</h3>
+          <div class="wrapper" id="wrapper2">
+            <div class="values">
+              <span class="rangeRead" id="range3"> 0 </span>
+              <span class="rangeDash"> &dash; </span>
+              <span class="rangeRead" id="range4"> 100 </span>
+            </div>
+            <div class="container">
+              <div class="slider-track" id="track2"></div>
+              <input
+                class="leftSlider"
+                type="range"
+                min="0"
+                max="150"
+                value="30"
+                id="slider-3"
+                oninput="slideThree()"
+              />
+              <input
+                class="rightSlider"
+                type="range"
+                min="0"
+                max="150"
+                value="70"
+                id="slider-4"
+                oninput="slideFour()"
+              />
+            </div>
+          </div>
+        </div>
+        <button class="filterBtn" onclick="filter()">Filter</button>
+      </div>
     </div>
 
-    <div class="wrapper" id="wrapper">
-      <div class="values">
-        <span id="range1"> 0 </span>
-        <span> &dash; </span>
-        <span id="range2"> 100 </span>
-      </div>
-      <div class="container">
-        <div class="slider-track"></div>
-        <input
-          type="range"
-          min="0"
-          max="150"
-          value="30"
-          id="slider-1"
-          oninput="slideOne()"
-        />
-        <input
-          type="range"
-          min="0"
-          max="150"
-          value="70"
-          id="slider-2"
-          oninput="slideTwo()"
-        />
-      </div>
+    <!-- sort by drop menu -->
+    <div class="sort">
+      <select id="sort">
+        <option value="relevancy">Relevancy</option>
+        <option value="location">Location</option>
+        <option value="cost">Cost</option>
+        <option value="rating">Rating</option>
+        <option value="roomsCount">Rooms count</option>
+      </select>
+      <button onclick="sort()">Sort</button>
     </div>
 
     <script src="index.js"></script>
