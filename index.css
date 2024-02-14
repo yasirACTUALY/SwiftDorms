@@ -2,12 +2,6 @@
   width: 70%;
 }
 .leftBar {
-  position: sticky;
-  width: 20%;
-  top: 6.48%;
-  height: 100vh;
-  /* background-color: #939496; */
-  /* color: transparent; */
   background-color: #b5b5b5;
   padding: 10px;
   left: 0%;
@@ -154,6 +148,17 @@ body {
   box-sizing: border-box;
 }
 
+body {
+  display: grid;
+  grid-template-rows: 8vh 92vh;
+  grid-template-columns: 20fr 80fr;
+  grid-template-areas: "header header"
+                       "filter results";
+}
+header { grid-area: header; }
+#sort-results { grid-area: results; overflow-y: scroll; }
+div.leftBar { grid-area: filter; }
+
 header {
   padding: 2em;
   padding-top: 0.7em;
@@ -234,7 +239,7 @@ img {
 .image-left {
   margin: 1em 0;
   background: #eeeeee;
-  margin-left: 600px;
+  /*margin-left: 600px;*/
   border-radius: 2%;
   padding: 10px;
 }
