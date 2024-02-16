@@ -9,7 +9,7 @@
 /* makes two sliders into one */
 .wrapper {
   /* position: absolute; */
-  /* display: none; */
+  display: grid;
   top: 0%;
   width: 60%;
   height: 50px;
@@ -26,14 +26,14 @@
 }
 .leftSlider {
   position: absolute;
-  top: -105%;
+  top: -135%;
   left: 5%;
   width: 90%;
   height: 50%;
   background-color: transparent;
 }
 .rightSlider {
-  top: -105%;
+  top: -135%;
   left: 5%;
   width: 90%;
   height: 0%;
@@ -58,19 +58,17 @@ input[type="range"] {
 #track1 {
   width: 80%;
   left: 10%;
-  height: 40%;
+  height: 0.6em;
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: -0.7em;
   border-radius: 5%;
 }
 #track2 {
   width: 80%;
   left: 10%;
-  height: 40%;
+  height: 0.6em;
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: -0.7em;
   border-radius: 5%;
 }
 input[type="range"]::-webkit-slider-runnable-track {
@@ -88,22 +86,22 @@ input[type="range"]::-ms-track {
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 1.7em;
-  width: 1.7em;
+  height: 1.7vw;
+  width: 1.7vw;
   background-color: darkgrey;
   cursor: pointer;
-  margin-top: -4%;
+  margin-top: -1.2vw;
   pointer-events: auto;
   border-radius: 50%;
 }
-/* input[type="range"]:active::-webkit-slider-thumb {
+input[type="range"]:active::-webkit-slider-thumb {
   background-color: #ffffff;
-  border: 20px solid #3264fe;
-} */
+  /* border: 20px solid #3264fe; */
+}
 .values {
   background-color: #c0c0c0;
   width: 50%;
-  height: 1em;
+  height: 0.9em;
   position: relative;
   margin: auto;
   padding: 0.4em 0;
@@ -111,12 +109,13 @@ input[type="range"]::-webkit-slider-thumb {
   text-align: center;
   font-size: 1.2vw;
   color: #ffffff;
+  top: -0.3vw;
 }
 /* showing the values of sliders*/
 .rangeRead {
   position: relative;
   color: #000;
-  top: -0.5em;
+  top: -0.6em;
 }
 .rangeDash {
   position: relative;
