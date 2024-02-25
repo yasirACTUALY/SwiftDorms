@@ -48,7 +48,7 @@ input[type="range"] {
   outline: gold;
   position: absolute;
   margin: auto;
-  top: -30;
+  top: -1.7em;
   bottom: 0;
   left: 5%;
   background-color: transparent;
@@ -145,6 +145,8 @@ body {
 }
 
 body {
+  margin: 0px;
+  padding: 0px;
   display: grid;
   grid-template-rows: 8vh 92vh;
   grid-template-columns: 20fr 80fr;
@@ -158,6 +160,7 @@ header {
 #sort-results {
   grid-area: results;
   overflow-y: scroll;
+  padding: 1em;
 }
 div.leftBar {
   grid-area: filter;
@@ -212,6 +215,7 @@ header .label img {
   justify-content: space-around;
   height: 30vh;
   width: 30vw;
+  background: white;
 }
 #login-modal form input {
   border: 3px solid black;
