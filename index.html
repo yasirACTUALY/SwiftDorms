@@ -1,213 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SwiftDorms</title>
-  </head>
 
-  <!--Stylesheet-->
-  <link rel="stylesheet" href="index.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwiftDorms</title>
+</head>
 
-  <body>
-    <!-- header Code -->
-    
-    <header>
-      <div id=logo><div class=label>SwiftDorms</div></div>
-      <div id=find-roommates><div class=label>Find roommates</div></div>
-      <div id=favorites><div class=label>Favorites</div></div>
-      <div id="chat">
-        <div class="label">Chat</div>
-        <div id=chatlist class="popup hidden">
-          <div>Option 1</div>
-          <div>Option 2</div>
-        </div>
-      </div>
-      <div id=profile>
-        <div class="label"><img src='pfp.svg' /></div>
-        <div class="popup hidden">
-          <div>Option&nbsp;&nbsp;&nbsp;1</div>
-          <div>Option 2</div>
-        </div>
-      </div>
-    </header>
-    <div id=login-modal class=hidden>
-      <form method=put action=/login>
-        <svg style='position: fixed;' height=1.5em width=1.5em viewBox="0 0 1.5 1.5">
-          <line x1=0 y1=0 x2=1.5 y2=1.5 stroke=black stroke-width=0.1 />
-          <line x1=0 y1=1.5 x2=1.5 y2=0 stroke=black stroke-width=0.1 />
-        </svg>
-        <h3>Log In</h3>
-        <input type=text name=username placeholder=username />
-        <input type=password name=password placeholder=password />
-        <center><input type=submit value='submit' /></center>
-      </form>
+<!--Stylesheet-->
+<link rel="stylesheet" href="index.css" />
+
+<body>
+  <!-- header Code -->
+
+  <header>
+    <div id=logo>
+      <div class=label>SwiftDorms</div>
     </div>
+    <div id=find-roommates>
+      <div class=label>Find roommates</div>
+    </div>
+    <div id=favorites>
+      <div class=label>Favorites</div>
+    </div>
+    <div id="chat">
+      <div class="label">Chat</div>
+      <div id=chatlist class="popup hidden">
+        <div>Option 1</div>
+        <div>Option 2</div>
+      </div>
+    </div>
+    <div id=profile>
+      <div class="label"><img src='pfp.svg' /></div>
+      <div class="popup hidden">
+        <div>Option&nbsp;&nbsp;&nbsp;1</div>
+        <div>Option 2</div>
+      </div>
+    </div>
+  </header>
+  <div id=login-modal class=hidden>
+    <form method=put action=/login>
+      <svg style='position: fixed;' height=1.5em width=1.5em viewBox="0 0 1.5 1.5">
+        <line x1=0 y1=0 x2=1.5 y2=1.5 stroke=black stroke-width=0.1 />
+        <line x1=0 y1=1.5 x2=1.5 y2=0 stroke=black stroke-width=0.1 />
+      </svg>
+      <h3>Log In</h3>
+      <input type=text name=username placeholder=username />
+      <input type=password name=password placeholder=password />
+      <center><input type=submit value='submit' /></center>
+    </form>
+  </div>
 
-    <!-- sorting options bar -->
-    <div class="leftBar">
-      <div class="leftBarContent">
-        <h2>Filters</h2>
-        <div class="filter">
-          <h3>Location</h3>
-          <input
-            class="searchBox"
-            type="text"
-            placeholder="Enter location"
-            id="location"
-          />
-        </div>
-        <div class="filter">
-          <h3>Cost</h3>
-          <div class="wrapper" id="wrapper">
-            <div class="values">
-              <span class="rangeRead" id="range1"> 0 </span>
-              <span class="rangeDash"> &dash; </span>
-              <span class="rangeRead" id="range2"> 100 </span>
-            </div>
-            <div class="container">
-              <div class="slider-track" id="track1"></div>
-              <input
-                class="leftSlider"
-                type="range"
-                min="0"
-                max="150"
-                value="30"
-                id="slider-1"
-                oninput="slideOne()"
-              />
-              <input
-                class="rightSlider"
-                type="range"
-                min="0"
-                max="150"
-                value="70"
-                id="slider-2"
-                oninput="slideTwo()"
-              />
-            </div>
+  <!-- sorting options bar -->
+  <div class="leftBar">
+    <div class="leftBarContent">
+      <h2>Filters</h2>
+      <div class="filter">
+        <h3>Location</h3>
+        <input class="searchBox" type="text" placeholder="Enter location" id="location" />
+      </div>
+      <div class="filter">
+        <h3>Cost</h3>
+        <div class="wrapper" id="wrapper">
+          <div class="values">
+            <span class="rangeRead" id="range1"> 0 </span>
+            <span class="rangeDash"> &dash; </span>
+            <span class="rangeRead" id="range2"> 100 </span>
+          </div>
+          <div class="container">
+            <div class="slider-track" id="track1"></div>
+            <input class="leftSlider" type="range" min="0" max="150" value="30" id="slider-1" oninput="slideOne()" />
+            <input class="rightSlider" type="range" min="0" max="150" value="70" id="slider-2" oninput="slideTwo()" />
           </div>
         </div>
-        <div class="filter">
-          <h3>Rating</h3>
-          <input
-            class="searchBox"
-            type="text"
-            placeholder="Enter rating"
-            id="rating"
-          />
-        </div>
-        <div class="filter">
-          <h3>Rooms count</h3>
-          <input
-            class="searchBox"
-            type="text"
-            placeholder="Enter rooms count"
-            id="roomsCount"
-          />
-        </div>
-        <div class="filter">
-          <h3>Distance</h3>
-          <div class="wrapper" id="wrapper2">
-            <div class="values">
-              <span class="rangeRead" id="range3"> 0 </span>
-              <span class="rangeDash"> &dash; </span>
-              <span class="rangeRead" id="range4"> 100 </span>
-            </div>
-            <div class="container">
-              <div class="slider-track" id="track2"></div>
-              <input
-                class="leftSlider"
-                type="range"
-                min="0"
-                max="150"
-                value="30"
-                id="slider-3"
-                oninput="slideThree()"
-              />
-              <input
-                class="rightSlider"
-                type="range"
-                min="0"
-                max="150"
-                value="70"
-                id="slider-4"
-                oninput="slideFour()"
-              />
-            </div>
+      </div>
+      <div class="filter">
+        <h3>Rating</h3>
+        <input class="searchBox" type="text" placeholder="Enter rating" id="rating" />
+      </div>
+      <div class="filter">
+        <h3>Rooms count</h3>
+        <input class="searchBox" type="text" placeholder="Enter rooms count" id="roomsCount" />
+      </div>
+      <div class="filter">
+        <h3>Distance</h3>
+        <div class="wrapper" id="wrapper2">
+          <div class="values">
+            <span class="rangeRead" id="range3"> 0 </span>
+            <span class="rangeDash"> &dash; </span>
+            <span class="rangeRead" id="range4"> 100 </span>
+          </div>
+          <div class="container">
+            <div class="slider-track" id="track2"></div>
+            <input class="leftSlider" type="range" min="0" max="150" value="30" id="slider-3" oninput="slideThree()" />
+            <input class="rightSlider" type="range" min="0" max="150" value="70" id="slider-4" oninput="slideFour()" />
           </div>
         </div>
-        <button class="filterBtn" onclick="filter()">Filter</button>
       </div>
+      <button class="filterBtn" onclick="filter()">Filter</button>
     </div>
+  </div>
 
-    <!-- sort by drop menu -->
-    <div class="sort">
-      <select id="sort">
-        <option value="relevancy">Relevancy</option>
-        <option value="location">Location</option>
-        <option value="cost">Cost</option>
-        <option value="rating">Rating</option>
-        <option value="roomsCount">Rooms count</option>
-      </select>
-      <button onclick="sort()">Sort</button>
+  <!-- sort by drop menu -->
+  <div class="sort">
+    <select id="sort">
+      <option value="relevancy">Relevancy</option>
+      <option value="location">Location</option>
+      <option value="cost">Cost</option>
+      <option value="rating">Rating</option>
+      <option value="roomsCount">Rooms count</option>
+    </select>
+    <button onclick="sort()">Sort</button>
+  </div>
+
+
+  <!-- Listings -->
+
+  <h1>Sort Results</h1>
+  <div class="image-left">
+    <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
+    <div>
+      <h2> Property Name </h2>
+      <p>Distance from RPI</p>
+
+      <p>Number of Rooms </p>
+      <P><b>Price per month</b></P>
     </div>
+  </div>
 
+  <div class="image-left">
+    <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
+    <div>
+      <a href="propertyDetails/propertyDetails.html">
+        <h2> Property Name </h2>
+      </a>
+      <p>Distance from RPI</p>
 
-    <!-- Listings -->
-    
-    <h1>Sort Results</h1>
-    <div class="image-left">
-        <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
-        <div>
-            <h2> Property Name </h2>
-            <p>Distance from RPI</p>
-
-            <p>Number of Rooms </p>
-            <P><b>Price per month</b></P>
-        </div>
+      <p>Number of Rooms </p>
+      <P><b>Price per month</b></P>
     </div>
-    <div class="image-left">
-        <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
-        <div>
-            <h2> Property Name </h2>
-            <p>Distance from RPI</p>
+  </div>
 
-            <p>Number of Rooms </p>
-            <P><b>Price per month</b></P>
-        </div>
+  <div class="image-left">
+    <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
+    <div>
+      <h2> Property Name </h2>
+      <p>Distance from RPI</p>
+
+      <p>Number of Rooms </p>
+      <P><b>Price per month</b></P>
     </div>
-    <div class="image-left">
-        <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
-        <div>
-            <h2> Property Name </h2>
-            <p>Distance from RPI</p>
+  </div>
+  <div class="image-left">
+    <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
+    <div>
+      <h2> Property Name </h2>
+      <p>Distance from RPI</p>
 
-            <p>Number of Rooms </p>
-            <P><b>Price per month</b></P>
-        </div>
+      <p>Number of Rooms </p>
+      <P><b>Price per month</b></P>
     </div>
-    <div class="image-left">
-        <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
-        <div>
-            <h2> Property Name </h2>
-            <p>Distance from RPI</p>
+  </div>
+  <div class="image-left">
+    <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
+    <div>
+      <h2> Property Name </h2>
+      <p>Distance from RPI</p>
 
-            <p>Number of Rooms </p>
-            <P><b>Price per month</b></P>
-        </div>
+      <p>Number of Rooms </p>
+      <P><b>Price per month</b></P>
     </div>
-    <div class="image-left">
-        <img src="https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg">
-        <div>
-            <h2> Property Name </h2>
-            <p>Distance from RPI</p>
+  </div>
 
-            <p>Number of Rooms </p>
-            <P><b>Price per month</b></P>
-        </div>
-    </div>  
+  <script src="index.js"></script>
+</body>
 
-    <script src="index.js"></script>
-  </body>
 </html>
