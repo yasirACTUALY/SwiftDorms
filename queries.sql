@@ -13,3 +13,16 @@ CREATE TABLE user_data (
     lname VARCHAR(50),
     gender ENUM('male', 'female', 'other') NOT NULL
 );
+
+-- apartment_listings table to store data from form of apartment listings
+CREATE TABLE apartment_listings (
+    listing_id INT AUTO_INCREMENT PRIMARY KEY,
+    address VARCHAR(255) NOT NULL,
+    description TEXT,
+    rent DECIMAL(10, 2) NOT NULL,
+    num_bedrooms INT,
+    num_bathrooms INT,
+    sq_ft INT,
+    availability ENUM('available', 'not available') NOT NULL,
+    contact_info VARCHAR(255)
+);
