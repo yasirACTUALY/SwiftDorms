@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  </head>
+  <head> </head>
   <body>
     <h1>Content:</h1>
-    <div id=content></div>
+    <div id="content"></div>
     <h1>Geo Info:</h1>
-    <div id=geo></div>
+    <div id="geo"></div>
     <script>
-      alert('hello, world!')
+      alert("hello, world!");
       try {
-        fetch('/tsh')
-          .then(data => data.text())
+        fetch("/tsh")
+          .then((data) => data.text())
           .then((text) => {
-            alert('hello, world!')
-            var el = document.createElement('html');
+            alert("hello, world!");
+            var el = document.createElement("html");
             el.innerHTML = text;
             return el;
           })
-          .then(dom => {
+          .then((dom) => {
             alert(dom);
-            const content = dom.querySelector('.entry-content');
-            const geo_info = dom.querySelector(`script[type="application/ld+json"]`);
-            document.querySelector('#content').innerHTML = content.innerHTML;
-            document.querySelector('#geo').innerText = geo_info.innerText;
+            const Address = dom.querySelector(".entry-title");
+            const size = dom.querySelector(".entry-title");
+            // Combined the address and the size into content
+            const content = dom.querySelector(".entry-title");
+            const geo_info = dom.querySelector(
+              `script[type="application/ld+json"]`
+            );
+            document.querySelector("#content").innerHTML = content.innerHTML;
+            document.querySelector("#geo").innerText = geo_info.innerText;
           })
-          .catch(err => { alert(`err inside:  ${err}`) });
-      } catch(err) { alert(`err outside:  ${err}`); }
+          .catch((err) => {
+            alert(`err inside:  ${err}`);
+          });
+      } catch (err) {
+        alert(`err outside:  ${err}`);
+      }
     </script>
   </body>
 </html>

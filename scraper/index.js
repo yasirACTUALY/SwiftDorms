@@ -19,7 +19,6 @@ app.get('/tsh', (req, res) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
       }
-
       res.header('Access-Control-Allow-Origin', '*').send(body); // json(JSON.parse(body));
     }
   )

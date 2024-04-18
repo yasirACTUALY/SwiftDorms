@@ -1,0 +1,6 @@
+jQuery(document).ready(function($){function sticky_relocate(){var window_top=$(window).scrollTop();var div_top=$('#sticky-anchor').offset().top;$('#sticky-anchor').height($('.headertop').outerHeight());if(window_top>div_top){$('.headertop').addClass('sticky');$('#sticky-anchor').css('position','relative');}else{$('.headertop').removeClass('sticky');$('#sticky-anchor').css('position','absolute');}}
+if($('#sticky-anchor').length){$(window).scroll(sticky_relocate);sticky_relocate();}
+$('a[href$=".pdf"]').each(function(){var title=$(this).attr('title');if(typeof title!==typeof undefined&&title!==false){if(title.indexOf('PDF')==-1){title=title+' PDF';}}else{title="PDF";}
+$(this).attr('title',title);});$('a[href$=".doc"]').each(function(){var title=$(this).attr('title');if(typeof title!==typeof undefined&&title!==false){if(title.indexOf('Word Document')==-1){title=title+' Opens Word Document';}}else{title='Word Document';}
+$(this).attr('title',title);});$('a[target="_blank"]').each(function(){var title=$(this).attr('title');if(typeof title!==typeof undefined&&title!==false){if(title.indexOf('new window')==-1){title=title+' Opens in a new window';}}else{title='Opens in a new window';}
+$(this).attr('title',title);});});
