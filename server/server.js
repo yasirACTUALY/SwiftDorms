@@ -54,11 +54,12 @@ createServer(async (req, res) => {
   } else if(url.pathname.startsWith('/posts')) {
     // For now a dummy response will go here for testing.
     let listings = [];
-    for(let _ of [1,2,3])
+    for(let i = 0; i < 12; i++)
       listings.push({
         // all of these attributes should be optionally null. that's probably a good idea
         img_url: "https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg",
-        propery_name: 'Property Name',
+        property_name: 'Property Name',
+        property_url: '/propertyDetails/propertyDetails.html',
         distance: 100, // We'll calculate this somehow probably.
         num_rooms: 4,
         price_per_month: 9*Math.pow(10,9), // We should make this an object like "period": "amount" so for example price: [ 'monthly', 1200 ]
