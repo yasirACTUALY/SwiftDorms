@@ -131,3 +131,38 @@ function search() {
     document.querySelector('#login-modal').classList.toggle('hidden'), false);
   document.querySelector('#login-modal form').addEventListener('click', (ev) =>
     ev.stopPropagation(), false);
+
+
+function addListing({img_url, property_name, 
+                     distance, num_rooms, 
+                     price_per_month, property_url}) {
+  let container = document.createElement('div');
+  container.className = 'image-left'
+  container.appendChild(document.createElement('img'))
+  container.lastChild.src = img_url;
+  let inner = document.createElement('div');
+  inner.innerHTML = '<a><h2></h2></a>';
+  inner.lastChild.href = property_url;
+  inner.lastChild.lastChild.innerText = property_name;
+  inner.appendChild(document.createElement('p'));
+  inner.lastChild.innerText = distance + ' miles';
+  inner.appendChild(document.createElement('p'));
+  inner.lastChild.innerText = num_rooms + ' rooms';
+  inner.appendChild(document.createElement('p'));
+  inner.lastChild.appendChild(document.createElement('b'));
+  inner.lastChild.lastChild.innerText = price_per_month + ' per month';
+
+  container.appendChild(inner);
+  document.querySelector('#sort-results').appendChild(container);
+}
+
+fetch('/posts').then(a => a.json()).then(a => a.forEach(addListing)).catch(alert);
+/*addListing({
+  // all of these attributes should be optionally null. that's probably a good idea
+  img_url: "https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg",
+  propery_name: 'Property Name',
+  property_url: '/propertyDetails/propertyDetails.html',
+  distance: 100, // We'll calculate this somehow probably.
+  num_rooms: 4,
+  price_per_month: 9*Math.pow(10,9), // We should make this an object like "period": "amount" so for example price: [ 'monthly', 1200 ]
+})*/
