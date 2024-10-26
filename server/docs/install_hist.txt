@@ -1,0 +1,54 @@
+  # snap has a more recent version than apt for whatever reason (20.x vs 18.x)
+sudo snap install node --classic
+sudo ufw enable
+
+sudo ufw app list
+sudo ufw allow "OpenSSH"
+
+sudo ufw status
+
+sudo ufw logging on
+
+sudo apt install nginx
+sudo ufw app list
+sudo ufw allow "Nginx Full"
+
+
+sudo cat >> /etc/nginx/sites-available/swiftdorms.cs.rpi.edu << EOF
+server {
+  listen 80;
+  listen [::]:80;
+
+  server_name swiftdorms.cs.rpi.edu;
+
+  location / {
+    proxy_pass http://localhost:3000; # this is the port that the nodejs server is listening to.
+    # proxy_http_version: 1.1; # it said "invalid directive" so idk im just going to comment it out
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}
+EOF
+
+sudo ln -s /etc/nginx/sites-available/swiftdorms.cs.rpi.edu /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx || (echo "nginx config syntax errors!" ; exit 1)
+
+  # this is for the generation of the encryption stuffs for https instead of http (to go with nginx)
+sudo apt install certbot python3-certbot-nginx
+  # this is an interactive commmand. It will request the domain you want to secure, and an email
+  # (I did not provide my email as you can see). It also requires agreement to their TOS:
+  # https://letsencrypt.org/documents/LE-SA-v1.4-April-3-2024.pdf which I skimmed-- didn't see
+  # anything I'm necessarily worried about. I think. Some email needs to be registered with them later
+  # though or else they may revoke the CA without us noticing.
+sudo certbot --register-unsafely-without-email --nginx
+
+  # for whatever reason the above command didn't work. It fails with an error because our domain is
+  # only valid inside of the rpi network, and therefore it fails validation/safety checks made by
+  # Let's Encrypt however this suggests there is a solution: 
+  # https://community.letsencrypt.org/t/can-letsencrypt-support-a-use-case-where-a-webserver-does-not-allow-inbound-public-connectivity/227682/4
+  # but I don't know anything about any of this, so I'm more inclined to believe I should be asking
+  # rpi for a cert or something, right? Does that make sense? urgh idk. I'm going to have to ask
+  # the other teams if they have set up TLS/SSL certs on rpi servers before and how they did it.
+  # there has to be something I'm doing very wrong here.
